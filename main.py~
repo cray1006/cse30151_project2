@@ -1,0 +1,55 @@
+#! /usr/bin/python -tt
+
+#Christopher Ray
+#Professor Blanton
+#CSE 30151
+#23 March 2015
+
+#main.py
+#main driver program for Python implementation of DPDA
+
+from PDA import PDA
+import sys
+
+def main():	#main function declaration
+	pda = PDA()	#initializing pda object	
+	
+	if(len(sys.argv) < 2):	#checking the number of arguments to this program (need to make sure there is a file avaiable)
+		print "not enough arguments"
+		return -1
+
+	try:
+		f = open(sys.argv[1])	#attempt to open the specified file
+	except:
+		print "error opening file"	#terminate if there is an issue opening the file
+		return -1
+
+	pda.initialize(f)	#initializing the pda (filling in states, alphabet, stack alphabet, etc)
+	if(pda.is_det() <= 0):	#checking if the pda is deterministic
+		print "PDA is not deterministic"	#terminate if pda is nondeterministic
+		return -1 
+
+	pda.transition('e', 0)		#pushing the end of stack character on to the stack
+
+	numLines = int(raw_input())	#reading in the number of tape arguments to be processes
+	if(numLines > 0):
+		i = 0
+		while(i < numLines):	#iterate and process every tape argument
+			line = raw_input()	#read in tape argument
+			line = line.replace(',', ' ').split()	#parse argument
+			for c in line:
+				if(pda.transition(c, 1) <= 0):	#pass input to dpda
+					return -1	#terminate if there was an issue with the transition function
+			pda.accept()	#check if the dpda is in an accept state
+			pda.reset()	#reset the dpda to its initial state
+			i = i + 1
+			if(i < numLines):	#push end of stack character on to the stack again if needed
+				pda.transition('e', 0)
+			print "\n"
+
+	f.close()	#closing input file
+	return 0
+	
+
+if __name__ == '__main__':
+	main()

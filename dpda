@@ -1,0 +1,10 @@
+#! /bin/sh
+#Christopher Ray
+#Professor Blanton
+#CSE 30151
+#30 March 2015
+
+#dpda
+#shell script for running project 2 submission
+
+python main.py $1
