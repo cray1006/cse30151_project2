@@ -1,0 +1,49 @@
+Christopher Ray
+Professor Blanton 
+CSE 30151
+30 March 2015
+
+Project 2 README
+
+Files that should be included in this submission:
+	main.py
+	PDA.py
+	stack.py
+	dpda
+	dpda1.txt
+	dpda-input1.txt
+	pda2.txt
+	pda3.txt
+	dpda4.txt
+	dpda-input4.txt
+	report.pdf
+	README
+	
+
+Execution command:	./dpda [pda description file] < [file containing tape inputs] > [output file]
+
+Execution examples:
+		./dpda pda1.txt
+
+		./dpda pda1.txt < pda_input.txt
+		
+		./dpda pda1.txt < pda_input.txt > pda_output.txt
+
+
+Note that if you are running the program without a file containing tape inputs, you will first have to enter an integer value for the number of tape inputs to be read.  You can then enter tape inputs formatted as so:
+	a,b,b,a,a,e,a
+
+	a,d,a,d,a
+
+Once you have entered the specified number of tape inputs you can once again input another integer value and enter another set of tape inputs.
+
+
+I have also included the files which I used to test/verify this program:
+	dpda1.txt
+	dpda-input1.txt
+	pda2.txt
+	pda3.txt
+	dpda4.txt
+	dpda-input4.txt
+	
+	
